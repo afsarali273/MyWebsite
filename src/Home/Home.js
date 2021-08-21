@@ -13,8 +13,7 @@ import './Home.css';
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faYoutube} from "@fortawesome/free-brands-svg-icons";
-import appium from '../Data/images/appium.png'
-
+import data from '../Data/data.json'
 
 class Home extends Component {
 
@@ -24,11 +23,26 @@ class Home extends Component {
             playlists: [],
             playlistItems: [],
             playlist: {},
-            activePlayListName: ""
+            activePlayListName: "",
+            localData:[]
         }
 
     }
 
+    loadLocalData(){
+        const loadData =  JSON.parse(JSON.stringify(data));
+        this.setState({
+            localData:loadData
+        })
+    }
+
+    getImagesUrl(playListId){
+        var foundValue =this.state.localData.find( x => x.id === playListId);
+        if(foundValue !== undefined)
+             return foundValue.image;
+
+        return "https://i1.wp.com/www.globaltrademag.com/wp-content/uploads/2018/12/software.jpg"
+    }
     navigateToPlayList(playListId) {
         const url = "https://www.youtube.com/playlist?list="+playListId;
         const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
@@ -50,6 +64,7 @@ class Home extends Component {
 
     componentDidMount() {
         this.getPlayListDetails();
+        this.loadLocalData();
     }
 
     render() {
@@ -81,7 +96,7 @@ class Home extends Component {
                                                 <CardMedia
                                                     component="img"
                                                     height="50"
-                                                    image={appium}
+                                                     image={this.getImagesUrl(list.id)}
                                                 />
                                                 <CardContent>
                                                     <Typography gutterBottom variant="h5" component="h2">
