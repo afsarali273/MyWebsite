@@ -1,0 +1,39 @@
+div.container-details{
+    display: flex;
+    margin: 30px 15% 10px 15%;
+    padding: 10px;
+    border: 1px dotted red;
+    flex-direction:column;
+    flex-wrap: wrap;
+    justify-content:  space-around;
+}
+
+.container-details >div{
+    padding: 5px;
+    min-width: 300px;
+    justify-items: center;
+}
+.playlist-details-list h6{
+    margin-top: 30px;
+}
+
+button > div > div > div:nth-child(3){
+    margin-top: 30px;
+}
+
+.playlist-details-list{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+img {
+    height: 70%;
+    width: 130px;
+    margin-right: 5px;
+}
+.youtube-icon:hover{
+   cursor: pointer;
+}
+
+

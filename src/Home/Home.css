@@ -1,0 +1,20 @@
+div.container{
+    display: flex;
+    margin: 10px 30px 10px 30px;
+    padding: 10px;
+    border: 1px dotted red;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content:  space-around;
+}
+
+.container >div{
+    border: 1px dotted green;
+    padding: 5px;
+    width: 30%;
+    min-width: 300px;
+    margin-bottom: 10px;
+
+
+
+}
