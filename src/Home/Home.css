@@ -9,12 +9,16 @@ div.container{
 }
 
 .container >div{
-    border: 1px dotted green;
+    /*border: 1px dotted green;*/
     padding: 5px;
     width: 30%;
     min-width: 300px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 
+}
 
+.card-item{
+    height: 350px;
+    width: 300px;
 
 }

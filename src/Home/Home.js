@@ -83,7 +83,7 @@ class Home extends Component {
 
                                 return (<div key={index}>
                                     <div>
-                                        <Card>
+                                        <Card className={"card-item"}>
                                             <Link style={{textDecoration:"none"}}  to={{
                                                 pathname:"/details/" +list.id,
                                                 state: {
