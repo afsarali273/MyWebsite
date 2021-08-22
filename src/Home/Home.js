@@ -15,7 +15,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faYoutube} from "@fortawesome/free-brands-svg-icons";
 import data from '../Data/data.json'
 
-class Home extends Component {
+export class Home extends Component {
 
     constructor() {
         super();
@@ -72,7 +72,8 @@ class Home extends Component {
 
             <div>
                 <Header/>
-                <div>
+                <div className={"sub-header"}>
+                    Youtube Playlists :
                 </div>
                 <div className={"container"}>
 
@@ -84,7 +85,7 @@ class Home extends Component {
                                 return (<div key={index}>
                                     <div>
                                         <Card className={"card-item"}>
-                                            <Link style={{textDecoration:"none"}}  to={{
+                                            <Link style={{textDecoration:"none",color:"#0A2187"}}  to={{
                                                 pathname:"/details/" +list.id,
                                                 state: {
                                                     playlists: this.state.playlists,
@@ -102,9 +103,12 @@ class Home extends Component {
                                                     <Typography gutterBottom variant="h5" component="h2">
                                                         {list.snippet.localized.title}
                                                     </Typography>
-                                                    <Typography variant="body2" color="textSecondary" component="p">
-                                                        {list.snippet.description}
-                                                    </Typography>
+                                                    <div className={"descriptions"}>
+                                                        <Typography variant="body2" color="textSecondary" component="p">
+                                                            {list.snippet.description}
+                                                        </Typography>
+                                                    </div>
+
                                                 </CardContent>
                                             </CardActionArea>
                                             </Link>
@@ -128,3 +132,4 @@ class Home extends Component {
 }
 
 export default (Home);
+

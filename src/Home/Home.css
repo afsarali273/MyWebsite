@@ -1,8 +1,7 @@
 div.container{
     display: flex;
     margin: 10px 30px 10px 30px;
-    padding: 10px;
-    border: 1px dotted red;
+    padding: 2%;
     flex-direction:row;
     flex-wrap: wrap;
     justify-content:  space-around;
@@ -11,7 +10,6 @@ div.container{
 .container >div{
     /*border: 1px dotted green;*/
     padding: 5px;
-    width: 30%;
     min-width: 300px;
     margin-bottom: 20px;
 
@@ -20,5 +18,15 @@ div.container{
 .card-item{
     height: 350px;
     width: 300px;
+
+}
+.sub-header{
+    font-size: large;
+    margin: 50px 0px 0px 70px;
+    text-transform: uppercase;
+    font-family: "Droid Sans Mono";
+    background-color: thistle;
+    padding: 10px;
+    color: indigo;
 
 }

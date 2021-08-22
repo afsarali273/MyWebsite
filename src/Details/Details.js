@@ -71,8 +71,6 @@ export default class Details extends Component{
 
                     <div>
                         <div>
-                            <br/><br/>
-                            Play List Videos Here
                             <div>
                                 {this.state.activePlayListName}
                             </div>
@@ -115,7 +113,6 @@ export default class Details extends Component{
                         </div>
                     </div>
                 </div>
-                This is details page
             </div>
         );
     }

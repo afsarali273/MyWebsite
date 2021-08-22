@@ -1,0 +1,17 @@
+.container1{
+    display: flex;
+    justify-content: space-between;
+}
+
+.second-part{
+display: flex;
+   margin-left: 200px;
+}
+.mainTitle{
+    font-family: 'Chewy', cursive;
+    font-size: x-large;
+}
+
+.mainTitle:hover{
+    cursor: pointer;
+}

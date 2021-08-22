@@ -2,7 +2,6 @@ div.container-details{
     display: flex;
     margin: 30px 15% 10px 15%;
     padding: 10px;
-    border: 1px dotted red;
     flex-direction:column;
     flex-wrap: wrap;
     justify-content:  space-around;
