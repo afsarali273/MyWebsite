@@ -1,11 +1,15 @@
 import React,{Component} from "react";
 import './Header.css'
-import {AppBar, Button, Toolbar} from "@material-ui/core";
+import {AppBar, Button, Menu, MenuItem, Toolbar, Typography} from "@material-ui/core";
 import { withRouter } from "react-router-dom";
 
 class Header extends Component{
     constructor(props) {
         super(props);
+        this.state={
+            anchorEl:null,
+            setAnchorEl:null
+        }
 
     }
     onClickHandle=()=>{
@@ -13,12 +17,24 @@ class Header extends Component{
     }
 
     onClickHandleAboutMe=()=>{
-        this.props.history.push("/about");
+        this.props.history.push("/about-me");
     }
 
     onClickHandleContact=()=>{
         this.props.history.push("/contact");
     }
+
+     handleClick = (event) => {
+        this.setState({
+            anchorEl:event.currentTarget
+        })
+    };
+
+     handleClose = () => {
+         this.setState({
+             anchorEl:null
+         })
+    };
 
     render() {
 
@@ -37,9 +53,33 @@ class Header extends Component{
                                 </Button>
                             </div>
                             <div>
-                                <Button color="inherit" >
-                                    Courses
-                                </Button>
+                                {/*<Button color="inherit" >*/}
+                                {/*    Courses*/}
+                                {/*</Button>*/}
+                                <div>
+                                    <Button color={"inherit"} aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleClick}>
+                                       <Typography>
+                                           Courses
+                                       </Typography>
+
+                                    </Button>
+                                    <Menu
+                                        id="simple-menu"
+                                        anchorEl={this.state.anchorEl}
+                                        keepMounted
+                                        open={Boolean(this.state.anchorEl)}
+                                        onClose={this.handleClose}
+                                    >
+                                        <MenuItem onClick={this.handleClose}>Selenium with Java</MenuItem>
+                                        <MenuItem onClick={this.handleClose}>Google API</MenuItem>
+                                        <MenuItem onClick={this.handleClose}>Appium</MenuItem>
+                                        <MenuItem onClick={this.handleClose}>WebDriverIO</MenuItem>
+                                        <MenuItem onClick={this.handleClose}>Cucumber</MenuItem>
+                                    </Menu>
+                                </div>
+
+
+
                             </div>
                             <div>
                                 <Button color="inherit" onClick={this.onClickHandleAboutMe}>

@@ -17,7 +17,7 @@ export default class AppRouter extends Component{
                     {/* home */}
                     <Route exact path="/" render={(props) => <Home />} />
                     <Route exact path="/details/:id" component={Details} />
-                    <Route exact path="/about" component={About} />
+                    <Route exact path="/about-me" component={About} />
                     <Route exact path="/contact" component={Contact} />
                 </div>
             </Router>

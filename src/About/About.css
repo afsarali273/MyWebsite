@@ -1,0 +1,28 @@
+.contact-icons div>svg:hover{
+    cursor: pointer;
+}
+
+.text2{
+    font-weight: bold;
+    margin-top: 60px;
+    color: cornflowerblue;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace
+}
+.container2{
+    display: flex;
+    margin: 30px;
+}
+.profilePic>img{
+    width: 200px;
+    height: 300px;
+    padding: 20px;
+}
+
+.contact-icons,.text2{
+    margin: 30px;
+}
+
+.tech-stack{
+ font-family: Candara;
+ font-size: large;
+}
