@@ -14,6 +14,7 @@ import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faYoutube} from "@fortawesome/free-brands-svg-icons";
 import data from '../Data/data.json'
+import emailkey from "../Data/emailkey";
 
 export class Home extends Component {
 
@@ -50,7 +51,7 @@ export class Home extends Component {
     }
 
     getPlayListDetails() {
-        axios.get("https://www.googleapis.com/youtube/v3/playlists?key=AIzaSyDcxllPRz1le19GjTXCukLAyZICReLBaxU&channelId=UCsXoni6lTrrbO5tbF0AU3yg&maxResults=50&part=snippet%2CcontentDetails")
+        axios.get("https://www.googleapis.com/youtube/v3/playlists?key="+emailkey.YOUTUBE_PUBLIC_KEY+"&channelId=UCsXoni6lTrrbO5tbF0AU3yg&maxResults=50&part=snippet%2CcontentDetails")
             .then(response => {
                 this.setState({
                     playlists: response.data

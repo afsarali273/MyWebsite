@@ -1,103 +1,122 @@
 import React, {Component} from "react";
 import Header from "../Header/Header";
-import axios from "axios";
+import {
+    Button, Card,
+    TextField,
+    Typography,
+    withStyles
+} from "@material-ui/core";
+import * as emailjs from "emailjs-com";
+import emailkey from "../Data/emailkey";
 
+const customStyles = theme => ({
+    root: {
+        width: "40%",
+        '& > *': {
+            margin: theme.spacing(2),
+            width: '90%',
+        },
+    },
+    paper: {
+        position: 'absolute',
+        width: 400,
+        backgroundColor: theme.palette.background.paper,
+        border: '2px solid #000',
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 3),
+    },
+});
 
-export default class Contact extends Component{
+ class Contact extends Component{
     constructor(props) {
         super(props);
         this.state = {
             name: '',
             email: '',
-            subject:'',
-            message: ''
+            message: '',
+            showModalText:false
         }
+        this.submitEmail=this.submitEmail.bind(this);
+        this.displayMessage = this.displayMessage.bind(this);
     }
 
-    onNameChange(event) {
-        this.setState({name: event.target.value})
-    }
 
-    onEmailChange(event) {
-        this.setState({email: event.target.value})
-    }
 
-    onSubjectChange(event) {
-        this.setState({subject: event.target.value})
-    }
-
-    onMsgChange(event) {
-        this.setState({message: event.target.value})
-    }
 
     submitEmail(e){
         e.preventDefault();
-        axios({
-            method: "POST",
-            url:"/send",
-            data:  this.state
-        }).then((response)=>{
-            if (response.data.status === 'success'){
-                alert("Message Sent.");
-                this.resetForm()
-            }else if(response.data.status === 'fail'){
-                alert("Message failed to send.")
-            }
+
+        const templateParams = {
+            name: this.state.name,
+            email:this.state.email,
+            message: this.state.message
+        };
+
+        emailjs.send("default_service", emailkey.TEMPLATE_ID, templateParams,emailkey.USER_ID)
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+
+            }, function(error) {
+                console.log('FAILED...', error);
+            });
+        this.setState({
+           showModalText:true,
+            name: '',
+            email: '',
+            message: ''
         })
     }
 
-    resetForm(){
-        this.setState({name: '', email: '',subject:'', message: ''})
+    displayMessage(){
+        if(this.state.showModalText)
+            return "block"
+        else
+            return "none"
     }
 
-
     render() {
+        const { classes } = this.props;
+
+       const  value = this.displayMessage();
+       console.log(value);
         return (
             <div>
                 <Header/>
-                <div className="section">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-12">
-                                <div className="section-title">
-                                    <h2 className="title">Contact Me</h2>
-                                    <p>Please let me know If you have any questions or need support on any topics ! </p><hr/>
-                                    <form id="contact-form" onSubmit={this.submitEmail.bind(this)}
-                                          method="POST">
-                                        <div className="form-group">
-                                            <div className="row">
-                                                <div className="col-md-6">
-                                                    <input placeholder = "Name"  id="name" type="text"
-                                                           className="form-control" required value={this.state.name}
-                                                           onChange={this.onNameChange.bind(this)}/>
-                                                </div>
-                                                <div className="col-md-6">
-                                                    <input placeholder = "Email"  id="email" type="email"
-                                                           className="form-control" aria-describedby="emailHelp"
-                                                           required value={this.state.email} onChange=
-                                                               {this.onEmailChange.bind(this)}/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="form-group">
-                                            <input placeholder = "Subject"  id="subject" type="text"
-                                                   className="form-control" required value={this.state.subject}
-                                                   onChange={this.onSubjectChange.bind(this)}/>
-                                        </div>
-                                        <div className="form-group">
-                                    <textarea placeholder = "Message"  id="message"
-                                              className="form-control" rows="1"
-                                              required value={this.state.message}
-                                              onChange= {this.onMsgChange.bind(this)}/>
-                                        </div>
-                                        <button type="submit" className="primary-btn submit">Submit</button>
-                                    </form>
-                                </div>
+
+                <div>
+
+                    <div className={"container"}>
+                        <Card className={classes.root}>
+
+                                <Typography variant={"h6"} style={{marginLeft:"30%",fontWeight:"bold",fontFamily:"'Chewy'"}} >
+                                    CONTACT ME
+                                </Typography>
+
+                                <form className={classes.root} noValidate autoComplete="true" onSubmit={this.submitEmail}>
+                                    <TextField  label="Name" variant="outlined" value={this.state.name} onChange={(e)=> this.setState({name:e.target.value})}/>
+                                    <TextField  type={"email"} label="Email" variant="outlined"  value={this.state.email} onChange={(e)=> this.setState({email:e.target.value})}/>
+                                    <TextField
+                                        label="Message"
+                                        multiline
+                                        minRows={6}
+                                        value={this.state.message}
+                                        variant="outlined"
+                                        onChange={(e)=> this.setState({message:e.target.value})}
+                                    />
+                                    <Button type={"submit"} size={"medium"} color={"primary"} variant={"contained"} title={"Submit"}>
+                                        Submit
+                                    </Button>
+                                </form>
+
+                            <div>
+
+                           <Typography style={{display: this.displayMessage(),fontFamily:"monospace",color:"green"}} variant={"body1"} > Thanks for writing to Me ! I will get back to you soon !  </Typography>
+
                             </div>
 
-                        </div>
-
+                        </Card>
                     </div>
+
                 </div>
             </div>
 
@@ -105,3 +124,5 @@ export default class Contact extends Component{
     }
 
 }
+
+export default withStyles(customStyles)(Contact);

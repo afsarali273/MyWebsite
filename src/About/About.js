@@ -35,7 +35,7 @@ export default class About extends Component{
                             <Typography variant={"span"} component={"span"}>
                                 <br/>
                                 <br/>
-                                Myself <b>Afsar Ali</b>,Test engineer by profession and developer by passion.I help community with testing related technical youtube videos.My goal is to help each and every test engineer's who are in the early phase of their career and struggling to cope of with advanced concepts of
+                                Myself <b>Afsar Ali</b>,Test engineer by profession and developer by passion.I help community with testing related technical youtube videos.My goal is to help each and every test engineer who are in the early phase of their career and struggling to cope up with advanced concepts of
                                 Test Automation , DevOps and some Development fundamentals.I am a proud indian and currently living in Singapore.
                             </Typography><br/><br/>
                             <span>

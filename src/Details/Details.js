@@ -1,11 +1,12 @@
 import React, {Component} from "react";
 import Header from "../Header/Header";
-import {Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography} from "@material-ui/core";
+import {Card, CardActionArea, CardContent, Typography} from "@material-ui/core";
 import axios from "axios";
 import './Details.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import emailkey from "../Data/emailkey";
 
-import {fab, faYoutube} from "@fortawesome/free-brands-svg-icons"
+import {faYoutube} from "@fortawesome/free-brands-svg-icons"
 
 
 
@@ -26,7 +27,7 @@ export default class Details extends Component{
 
         const playListId = window.location.href.split("/")[4];
         console.log("URL : "+playListId);
-        axios.get("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails&maxResults=50&playlistId="+playListId+"&key=AIzaSyDcxllPRz1le19GjTXCukLAyZICReLBaxU")
+        axios.get("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails&maxResults=50&playlistId="+playListId+"&key="+emailkey.YOUTUBE_PUBLIC_KEY)
             .then(res => {
                 this.setState({
                     playlistItems: res.data
