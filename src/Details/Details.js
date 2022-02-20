@@ -1,16 +1,16 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Header from "../Header/Header";
-import {Card, CardActionArea, CardContent, Typography} from "@material-ui/core";
+import { Card, CardActionArea, CardContent, Typography } from "@material-ui/core";
 import axios from "axios";
 import './Details.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import emailkey from "../Data/emailkey";
 
-import {faYoutube} from "@fortawesome/free-brands-svg-icons"
+import { faYoutube } from "@fortawesome/free-brands-svg-icons"
 
 
 
-export default class Details extends Component{
+export default class Details extends Component {
 
     constructor(props) {
         super(props);
@@ -26,8 +26,8 @@ export default class Details extends Component{
     getPlayListVideos() {
 
         const playListId = window.location.href.split("/")[4];
-        console.log("URL : "+playListId);
-        axios.get("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails&maxResults=50&playlistId="+playListId+"&key="+emailkey.YOUTUBE_PUBLIC_KEY)
+        console.log("URL : " + playListId);
+        axios.get("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails&maxResults=50&playlistId=" + playListId + "&key=" + emailkey.YOUTUBE_PUBLIC_KEY)
             .then(res => {
                 this.setState({
                     playlistItems: res.data
@@ -35,8 +35,8 @@ export default class Details extends Component{
 
                 this.getPlayListName(res.data);
             }).catch(err => {
-            console.log(err);
-        })
+                console.log(err);
+            })
 
     }
 
@@ -55,8 +55,8 @@ export default class Details extends Component{
         this.getPlayListVideos();
     }
 
-    navigateToPlayList(playListId,videoId) {
-        const url = "https://www.youtube.com/watch?v="+videoId+"&list="+playListId;
+    navigateToPlayList(playListId, videoId) {
+        const url = "https://www.youtube.com/watch?v=" + videoId + "&list=" + playListId;
         const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
         if (newWindow) newWindow.opener = null
     }
@@ -66,7 +66,7 @@ export default class Details extends Component{
 
         return (
             <div>
-                <Header/>
+                <Header />
 
                 <div>
 
@@ -76,7 +76,7 @@ export default class Details extends Component{
                                 {this.state.activePlayListName}
                             </div>
 
-                            <br/><br/>
+                            <br /><br />
 
                             <div className={"container-details"}>
 
@@ -85,13 +85,13 @@ export default class Details extends Component{
                                         return (<div key={index}>
                                             <div>
                                                 <Card >
-                                                    <CardActionArea onClick={()=> this.navigateToPlayList(videos.snippet.playlistId,videos.snippet.resourceId.videoId)}>
+                                                    <CardActionArea onClick={() => this.navigateToPlayList(videos.snippet.playlistId, videos.snippet.resourceId.videoId)}>
                                                         <CardContent>
                                                             <div className={"playlist-details-list"}>
 
-                                                                <div style={{marginLeft:10}}>
+                                                                <div style={{ marginLeft: 10 }}>
                                                                     <div className="square">
-                                                                        <img src={videos.snippet.thumbnails.high.url}/>
+                                                                        <img src={videos.snippet.thumbnails.high.url} alt="thumbnail" />
                                                                     </div>
 
                                                                 </div>
@@ -99,7 +99,7 @@ export default class Details extends Component{
                                                                     {videos.snippet.title}
                                                                 </Typography>
                                                                 <div>
-                                                                    <FontAwesomeIcon onClick={()=> this.navigateToPlayList(videos.snippet.playlistId,videos.snippet.resourceId.videoId)} icon={faYoutube} style={{ width:100, height:40 , color:"red"}}/>
+                                                                    <FontAwesomeIcon onClick={() => this.navigateToPlayList(videos.snippet.playlistId, videos.snippet.resourceId.videoId)} icon={faYoutube} style={{ width: 100, height: 40, color: "red" }} />
                                                                 </div>
                                                             </div>
                                                         </CardContent>
