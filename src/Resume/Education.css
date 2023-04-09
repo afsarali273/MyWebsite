@@ -1,0 +1,36 @@
+.education {
+    margin-bottom: 40px;
+  }
+  
+  .education__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .education__icon {
+    font-size: 24px;
+    margin-right: 10px;
+  }
+  
+  .education__degree {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .education__institution {
+    margin-left: 10px;
+    font-size: 18px;
+    font-style: italic;
+  }
+  
+  .education__dates {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .education__description {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  

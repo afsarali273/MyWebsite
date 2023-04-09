@@ -1,0 +1,20 @@
+.app__header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0rem;
+    margin-top: 1rem;
+}
+
+.app__button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
+.app__button:hover {
+    background-color: #0069d9;
+}

@@ -1,0 +1,36 @@
+.experience {
+    margin-bottom: 40px;
+  }
+  
+  .experience__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .experience__icon {
+    font-size: 24px;
+    margin-right: 10px;
+  }
+  
+  .experience__position {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .experience__employer {
+    margin-left: 10px;
+    font-size: 18px;
+    font-style: italic;
+  }
+  
+  .experience__dates {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .experience__description {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
