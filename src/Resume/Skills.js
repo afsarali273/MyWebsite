@@ -70,7 +70,7 @@ const Skills = () => {
           </Button>
         </Box>
         {filteredSkills.map((skill) => (
-          <Typography key={skill.name}>
+          <Typography style={{ marginLeft: "1rem" }} key={skill.name}>
             {skill.name} - {skill.level}
           </Typography>
         ))}
